@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <math.h>
+int order(int x)
+{
+    int len = 0;
+    while (x)
+    {
+        len++;
+        x = x/10;
+    }
+    return len;
+}
+
+int armstrong(int num, int len){
+
+    int sum = 0, temp, digit;
+    temp = num;
+    
+    // loop to extract digit, find power & add to sum
+    while(temp != 0)
+    {
+        // extract digit
+        digit = temp % 10;
+
+        // add power to sum
+        sum = sum + pow(digit,len);
+        temp /= 10;
+    };
+
+    return num == sum;
+}
+
+// Driver Code
+int main ()
+{
+    //variables initialization
+    int num = 1634, len;
+ 
+    // function to get order(length)
+    len = order(num);
+    
+    // check if Armstrong
+    if (armstrong(num, len))
+        printf("%d is armstrong\n",num);
+    else
+         printf("%d is not armstrong\n",num);
+
+
+    return 0;
+}
